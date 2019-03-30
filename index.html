@@ -1,75 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Piano Game</title>
-	<link href="https://fonts.googleapis.com/css?family=Merriweather|Mrs+Sheppards" rel="stylesheet">
-	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-	<h1 class="main_title">Pianotes</h1>
-	<h2 class="subtitle">Learn music notes by playing</h2>
-	<div class="play_sound-wrapper">
-		<button class="play_sound-button"><span>🎵</span>Press to hear the sound</button>
-	</div>
-	<div class="keys">
-    <div data-key="65" class="white key">
-      <kbd>A</kbd>
-    </div>
-    <div data-key="87" class="black key c-sharp sharp-pos-top">
-      <kbd>W</kbd>
-    </div>
-    <div data-key="83" class="white key">
-      <kbd>S</kbd>
-    </div>
-    <div data-key="69" class="black key d-sharp sharp-pos-top">
-      <kbd>E</kbd>
-    </div>
-    <div data-key="68" class="white key">
-      <kbd>D</kbd>
-    </div>
-    <div data-key="70" class="white key">
-      <kbd>F</kbd>
-    </div>
-    <div data-key="84" class="black key sharp-pos-top">
-      <kbd>T</kbd>
-    </div>
-    <div data-key="71" class="white key">
-      <kbd>G</kbd>
-    </div>
-    <div data-key="89" class="black key g-sharp sharp-pos-top">
-      <kbd>Y</kbd>
-    </div>
-    <div data-key="72" class="white key">
-      <kbd>H</kbd>
-    </div>
-    <div data-key="85" class="black key a-sharp sharp-pos-top">
-      <kbd>U</kbd>
-    </div>
-    <div data-key="74" class="white key">
-      <kbd>J</kbd>
-    </div>
-    <div data-key="75" class="white key">
-      <kbd>K</kbd>
-    </div>
-  </div>
 
-  <audio preload="auto" data-key="65" src="audio/C4.wav"></audio>
-  <audio preload="auto" data-key="87" src="audio/CSharp4.wav"></audio>
-  <audio preload="auto" data-key="83" src="audio/D4.wav"></audio>
-  <audio preload="auto" data-key="69" src="audio/DSharp4.wav"></audio>
-  <audio preload="auto" data-key="68" src="audio/E4.wav"></audio>
-  <audio preload="auto" data-key="70" src="audio/F4.wav"></audio>
-  <audio preload="auto" data-key="84" src="audio/FSharp4.wav"></audio>
-  <audio preload="auto" data-key="71" src="audio/G4.wav"></audio>
-  <audio preload="auto" data-key="89" src="audio/GSharp4.wav"></audio>
-  <audio preload="auto" data-key="72" src="audio/A4.wav"></audio>
-  <audio preload="auto" data-key="85" src="audio/ASharp4.wav"></audio>
-  <audio preload="auto" data-key="74" src="audio/B4.wav"></audio>
-  <audio preload="auto" data-key="75" src="audio/C5.wav"></audio>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="scripts.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Piano Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Mrs+Sheppards" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1 class="main_title">Pianotes</h1>
+    <h2 class="subtitle">Learn music notes by playing</h2>
+    <div class="play_sound-wrapper">
+        <button class="play_sound-button"><span>🎵</span>Press to hear the sound</button>
+    </div>
+    <div class="result"></div>
+    <div class="keys">
+        <div data-key="65" class="white key">
+            <kbd>C4</kbd>
+        </div>
+        <div data-key="87" class="black key c-sharp sharp-pos-top">
+            <kbd>CSharp4</kbd>
+        </div>
+        <div data-key="83" class="white key">
+            <kbd>D4</kbd>
+        </div>
+        <div data-key="69" class="black key d-sharp sharp-pos-top">
+            <kbd>DSharp4</kbd>
+        </div>
+        <div data-key="68" class="white key">
+            <kbd>E4</kbd>
+        </div>
+        <div data-key="70" class="white key">
+            <kbd>F4</kbd>
+        </div>
+        <div data-key="84" class="black key sharp-pos-top">
+            <kbd>FSharp4</kbd>
+        </div>
+        <div data-key="71" class="white key">
+            <kbd>G4</kbd>
+        </div>
+        <div data-key="89" class="black key g-sharp sharp-pos-top">
+            <kbd>GSharp4</kbd>
+        </div>
+        <div data-key="72" class="white key">
+            <kbd>A4</kbd>
+        </div>
+        <div data-key="85" class="black key a-sharp sharp-pos-top">
+            <kbd>ASharp4</kbd>
+        </div>
+        <div data-key="74" class="white key">
+            <kbd>B4</kbd>
+        </div>
+        <div data-key="75" class="white key">
+            <kbd>C5</kbd>
+        </div>
+    </div>
+    <div class="audio_notes">
+	    <audio preload="auto" data-key="65" src="audio/C4.wav"></audio>
+	    <audio preload="auto" data-key="87" src="audio/CSharp4.wav"></audio>
+	    <audio preload="auto" data-key="83" src="audio/D4.wav"></audio>
+	    <audio preload="auto" data-key="69" src="audio/DSharp4.wav"></audio>
+	    <audio preload="auto" data-key="68" src="audio/E4.wav"></audio>
+	    <audio preload="auto" data-key="70" src="audio/F4.wav"></audio>
+	    <audio preload="auto" data-key="84" src="audio/FSharp4.wav"></audio>
+	    <audio preload="auto" data-key="71" src="audio/G4.wav"></audio>
+	    <audio preload="auto" data-key="89" src="audio/GSharp4.wav"></audio>
+	    <audio preload="auto" data-key="72" src="audio/A4.wav"></audio>
+	    <audio preload="auto" data-key="85" src="audio/ASharp4.wav"></audio>
+	    <audio preload="auto" data-key="74" src="audio/B4.wav"></audio>
+	    <audio preload="auto" data-key="75" src="audio/C5.wav"></audio>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
+
 </html>

@@ -1,45 +1,47 @@
-var keysPressed = [];
+//Array containing all the keycodes of the music notes
+var notes = ["65", "87", "83", "69", "68", "70", "84", "71", "89", "72", "85", "74", "75"];
+//Init var current note played by random button
+var currentNote;
 
-function playKey(keyCode) {
-  console.log("playKey", keyCode);
-    // const audio = $('audio').attr('data-key', ${keyCode});
-    var audio = $(`audio[data-key=${keyCode}]`);
-  console.log("audio", audio);
-    $(audio)[0].play();
-    // [attribute="value"]
-    // const key = $('.key').attr(`[data-key="${keyCode}"]`);
-
-
-    // console.log("audio", audio);
-    // if (key !== null)
-    // {
-    //     key.classList.contains('white') ? key.classList.add('playing-white') : key.classList.add('playing-black');
-
-    //     if (!keysPressed.includes(key))
-    //     {
-    //         keysPressed.push(key);
-    //         audio.currentTime = 0;
-    //         audio.play();
-    //     }
-    // }
-}
-
-function resetKey(e)
-{
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-
-    var index = keysPressed.indexOf(key);
-    if (index !== -1) keysPressed.splice(index, 1);
-
-    if (key !== null) key.classList.remove('playing-white', 'playing-black');
-}
-
+// Click event on the key pressed, saves the data-key pressed and calls playKey function with the data-key number 
 $('body').on('click', '.key', function(event) {
-  // event.preventDefault();
-  /* Act on the event */
-  // console.log("event", event);
   var keyCode = $(event.currentTarget).attr("data-key");
   playKey(keyCode);
 });
-// window.addEventListener('keydown', playKey);
-// window.addEventListener('keyup', resetKey);
+
+// Click event on the play random sound button
+$('body').on('click', '.play_sound-button', function(event) {
+  playRandomNote();
+});
+
+//Function to play the correspondig audio file to the pressed key
+function playKey(keyCode) {
+    var audio = $(`audio[data-key=${keyCode}]`);
+    //Plays the corresponding audio file
+    $(audio)[0].play();
+    //Check if the key pressed matches the previously note generated
+    if (keyCode === currentNote) {
+      $('.result').html("Correct!")
+    } else {
+      $('.result').html("Wrong!")
+    }
+}
+
+//Function to generate a random number between 0 and the quantity of music notes in the array
+function generateRandomKey() {
+  var min = 0;
+  var max = notes.length;
+  var random = Math.floor(Math.random() * (max - min + 1)) + min;
+  //Saves the current played note in a global variables
+  currentNote = notes[random];
+  return currentNote;
+}
+//Function to play a random audio file from the list of keynotes
+function playRandomNote() {
+  //First generate a random key from the array
+  var randomNote = generateRandomKey();
+  //Select the audio tag matching the random key generated
+  var audio = $(`audio[data-key=${randomNote}]`);
+  // Plays the corresponding random key
+  $(audio)[0].play();
+}
